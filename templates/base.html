@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Glowly{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/salon.css' %}?v=5">
+</head>
+<body>
+    <header class="site-header">
+        <a class="logo" href="{% url 'home' %}">Glowly</a>
+        <nav>
+            <a href="{% url 'catalog' %}">Салон</a>
+            <a href="{% url 'service_list' %}">Послуги</a>
+            <a class="nav-book" href="{% url 'appointment_create' %}">Записатися</a>
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer">Glowly · запис до салону</footer>
+</body>
+</html>

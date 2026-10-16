@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Послуги — Glowly{% endblock %}
+
+{% block content %}
+<div class="page-intro">
+    <p class="eyebrow">Каталог</p>
+    <h1>Послуги</h1>
+</div>
+<ul class="cards">
+    {% for service in services %}
+        <li class="card">
+            <h2>{{ service.name }}</h2>
+            {% if service.description %}<p>{{ service.description }}</p>{% endif %}
+            <p class="meta">{{ service.duration_minutes }} хв · {{ service.price }} грн</p>
+            <p>
+                Майстри:
+                {% for specialist in service.specialists.all %}
+                    <a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    ще не призначені
+                {% endfor %}
+            </p>
+            <a class="button" href="{% url 'appointment_create' %}?service={{ service.pk }}">Записатися</a>
+        </li>
+    {% empty %}
+        <li>Каталог порожній.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

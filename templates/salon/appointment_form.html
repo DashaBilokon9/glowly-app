@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Запис — Glowly{% endblock %}
+
+{% block content %}
+<div class="page-intro">
+    <p class="eyebrow">Візит</p>
+    <h1>Запис</h1>
+    <p class="lede">Акаунт не потрібен. Залиш ім’я і телефон — салон підтвердить візит.</p>
+</div>
+<form method="post" class="booking-form">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <label>
+            {{ field.label }}
+            {{ field }}
+            {{ field.errors }}
+        </label>
+    {% endfor %}
+    <button type="submit">Підтвердити запис</button>
+</form>
+{% endblock %}

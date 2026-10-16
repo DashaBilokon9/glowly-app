@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Glowly — салон{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">Салон краси</p>
+    <h1>Обери послугу і майстра</h1>
+    <p class="lede">Запис без акаунта: ім’я, телефон і зручний час.</p>
+    <a class="button" href="{% url 'appointment_create' %}">Записатися</a>
+</section>
+
+<section>
+    <h2>Послуги</h2>
+    <ul class="cards services">
+        {% for service in services %}
+            <li class="card">
+                <h3>{{ service.name }}</h3>
+                <p class="meta">{{ service.duration_minutes }} хв · {{ service.price }} грн</p>
+                <a href="{% url 'appointment_create' %}?service={{ service.pk }}">Записатися</a>
+            </li>
+        {% empty %}
+            <li>Послуг ще немає. Додай їх в адмінці.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h2>Майстри</h2>
+    <ul class="cards">
+        {% for specialist in specialists %}
+            <li class="card">
+                <h3><a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.name }}</a></h3>
+                <p>
+                    {% for service in specialist.services.all %}
+                        {{ service.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                        Послуги ще не обрані
+                    {% endfor %}
+                </p>
+            </li>
+        {% empty %}
+            <li>Майстрів ще немає.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

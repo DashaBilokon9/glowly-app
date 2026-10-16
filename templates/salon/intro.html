@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Glowly — знайомство{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">Ознайомлення</p>
+    <h1>Glowly</h1>
+    <p class="lede">Салон краси, де можна спокійно обрати послугу, майстра і час. Акаунт не потрібен: достатньо імені й телефону.</p>
+    <a class="button" href="{% url 'catalog' %}">Дивитися салон</a>
+</section>
+
+<section>
+    <h2>Як записатися</h2>
+    <ol class="cards services steps">
+        <li class="card">
+            <p class="meta">01</p>
+            <h3>Послуга</h3>
+            <p>
+                {% for service in services %}
+                    {{ service.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    Каталог ще порожній
+                {% endfor %}
+            </p>
+        </li>
+        <li class="card">
+            <p class="meta">02</p>
+            <h3>Майстер</h3>
+            <p>У кожного свої послуги. На картці видно, хто що робить.</p>
+        </li>
+        <li class="card">
+            <p class="meta">03</p>
+            <h3>Час</h3>
+            <p>Ім’я, телефон і дата. Салон зателефонує, щоб підтвердити візит.</p>
+        </li>
+    </ol>
+</section>
+{% endblock %}

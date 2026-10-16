@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Запис збережено — Glowly{% endblock %}
+
+{% block content %}
+<section class="thanks">
+    <p class="eyebrow">Готово</p>
+    <h1>Дякуємо</h1>
+    <p>Запис є в базі. Адміністратор побачить його в розділі «Записи».</p>
+    <p><a href="{% url 'home' %}">На головну</a></p>
+</section>
+{% endblock %}
