@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Запис збережено — Glowly{% endblock %}
+{% block title %}{% translate "Запис збережено — Glowly" %}{% endblock %}
 
 {% block content %}
 <section class="thanks">
-    <p class="eyebrow">Готово</p>
-    <h1>Дякуємо</h1>
-    <p>Запис є в базі. Адміністратор побачить його в розділі «Записи».</p>
-    <p><a href="{% url 'home' %}">На головну</a></p>
+    <p class="eyebrow">{% translate "Готово" %}</p>
+    <h1>{% translate "Дякуємо" %}</h1>
+    <p>{% translate "Запис є в базі. Адміністратор побачить його в розділі «Записи»." %}</p>
+    <p><a href="{% url 'home' %}">{% translate "На головну" %}</a></p>
 </section>
 {% endblock %}

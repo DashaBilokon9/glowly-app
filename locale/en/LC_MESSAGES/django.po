@@ -1,0 +1,146 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "Салон"
+msgstr "Salon"
+
+msgid "Послуги"
+msgstr "Services"
+
+msgid "Записатися"
+msgstr "Book"
+
+msgid "Glowly · запис до салону"
+msgstr "Glowly · salon booking"
+
+msgid "Glowly — знайомство"
+msgstr "Glowly — welcome"
+
+msgid "Ознайомлення"
+msgstr "Welcome"
+
+msgid "Салон краси, де можна спокійно обрати послугу, майстра і час. Акаунт не потрібен: достатньо імені й телефону."
+msgstr "A beauty salon where you can choose a service, a specialist, and a time. No account needed: just your name and phone number."
+
+msgid "Дивитися салон"
+msgstr "See the salon"
+
+msgid "Як записатися"
+msgstr "How to book"
+
+msgid "Послуга"
+msgstr "Service"
+
+msgid "Каталог ще порожній"
+msgstr "The catalog is still empty"
+
+msgid "Майстер"
+msgstr "Specialist"
+
+msgid "У кожного свої послуги. На картці видно, хто що робить."
+msgstr "Each specialist has their own services. The card shows who does what."
+
+msgid "Час"
+msgstr "Time"
+
+msgid "Ім’я, телефон і дата. Салон зателефонує, щоб підтвердити візит."
+msgstr "Name, phone number, and date. The salon will call to confirm the visit."
+
+msgid "Glowly — салон"
+msgstr "Glowly — salon"
+
+msgid "Салон краси"
+msgstr "Beauty salon"
+
+msgid "Обери послугу і майстра"
+msgstr "Choose a service and a specialist"
+
+msgid "Запис без акаунта: ім’я, телефон і зручний час."
+msgstr "Book without an account: name, phone number, and a time that suits you."
+
+msgid "%(minutes)s хв · %(price)s грн"
+msgstr "%(minutes)s min · %(price)s UAH"
+
+msgid "Послуг ще немає. Додай їх в адмінці."
+msgstr "No services yet. Add them in the admin."
+
+msgid "Майстри"
+msgstr "Specialists"
+
+msgid "Послуги ще не обрані"
+msgstr "No services selected yet"
+
+msgid "Майстрів ще немає."
+msgstr "No specialists yet."
+
+msgid "Послуги — Glowly"
+msgstr "Services — Glowly"
+
+msgid "Каталог"
+msgstr "Catalog"
+
+msgid "Майстри:"
+msgstr "Specialists:"
+
+msgid "ще не призначені"
+msgstr "not assigned yet"
+
+msgid "Каталог порожній."
+msgstr "The catalog is empty."
+
+msgid "Цей майстер ще не прив’язаний до послуг."
+msgstr "This specialist is not linked to any services yet."
+
+msgid "Запис — Glowly"
+msgstr "Booking — Glowly"
+
+msgid "Візит"
+msgstr "Visit"
+
+msgid "Запис"
+msgstr "Booking"
+
+msgid "Акаунт не потрібен. Залиш ім’я і телефон — салон підтвердить візит."
+msgstr "No account needed. Leave your name and phone number, and the salon will confirm the visit."
+
+msgid "Підтвердити запис"
+msgstr "Confirm booking"
+
+msgid "Запис збережено — Glowly"
+msgstr "Booking saved — Glowly"
+
+msgid "Готово"
+msgstr "Done"
+
+msgid "Дякуємо"
+msgstr "Thank you"
+
+msgid "Запис є в базі. Адміністратор побачить його в розділі «Записи»."
+msgstr "The booking is in the database. An administrator will see it under Appointments."
+
+msgid "На головну"
+msgstr "Back home"
+
+msgid "Дата і час"
+msgstr "Date and time"
+
+msgid "Ім'я"
+msgstr "Name"
+
+msgid "Телефон"
+msgstr "Phone"
+
+msgid "Вкажіть номер щонайменше з 10 цифр."
+msgstr "Enter a number with at least 10 digits."
+
+msgid "Оберіть час у майбутньому."
+msgstr "Choose a time in the future."
+
+msgid "Цей майстер не виконує обрану послугу."
+msgstr "This specialist does not offer the selected service."
+
+msgid "Запис збережено. Ми зателефонуємо для підтвердження."
+msgstr "Booking saved. We will call to confirm."

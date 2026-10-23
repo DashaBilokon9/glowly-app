@@ -1,30 +1,31 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Послуги — Glowly{% endblock %}
+{% block title %}{% translate "Послуги — Glowly" %}{% endblock %}
 
 {% block content %}
 <div class="page-intro">
-    <p class="eyebrow">Каталог</p>
-    <h1>Послуги</h1>
+    <p class="eyebrow">{% translate "Каталог" %}</p>
+    <h1>{% translate "Послуги" %}</h1>
 </div>
 <ul class="cards">
     {% for service in services %}
         <li class="card">
-            <h2>{{ service.name }}</h2>
-            {% if service.description %}<p>{{ service.description }}</p>{% endif %}
-            <p class="meta">{{ service.duration_minutes }} хв · {{ service.price }} грн</p>
+            <h2>{{ service.localized_name }}</h2>
+            {% if service.localized_description %}<p>{{ service.localized_description }}</p>{% endif %}
+            <p class="meta">{% blocktranslate with minutes=service.duration_minutes price=service.price %}{{ minutes }} хв · {{ price }} грн{% endblocktranslate %}</p>
             <p>
-                Майстри:
+                {% translate "Майстри:" %}
                 {% for specialist in service.specialists.all %}
-                    <a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.name }}</a>{% if not forloop.last %}, {% endif %}
+                    <a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.localized_name }}</a>{% if not forloop.last %}, {% endif %}
                 {% empty %}
-                    ще не призначені
+                    {% translate "ще не призначені" %}
                 {% endfor %}
             </p>
-            <a class="button" href="{% url 'appointment_create' %}?service={{ service.pk }}">Записатися</a>
+            <a class="button" href="{% url 'appointment_create' %}?service={{ service.pk }}">{% translate "Записатися" %}</a>
         </li>
     {% empty %}
-        <li>Каталог порожній.</li>
+        <li>{% translate "Каталог порожній." %}</li>
     {% endfor %}
 </ul>
 {% endblock %}

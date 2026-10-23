@@ -1,9 +1,18 @@
 from django.db import models
+from django.utils.translation import get_language
+
+
+def localized(original, english):
+    if get_language() == 'en' and english:
+        return english
+    return original
 
 
 class Service(models.Model):
     name = models.CharField('назва', max_length=100)
+    name_en = models.CharField('назва англійською', max_length=100, blank=True)
     description = models.TextField('опис', blank=True)
+    description_en = models.TextField('опис англійською', blank=True)
     price = models.DecimalField('ціна, грн', max_digits=8, decimal_places=2)
     duration_minutes = models.PositiveIntegerField('тривалість, хв')
 
@@ -15,10 +24,20 @@ class Service(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def localized_name(self):
+        return localized(self.name, self.name_en)
+
+    @property
+    def localized_description(self):
+        return localized(self.description, self.description_en)
+
 
 class Specialist(models.Model):
     name = models.CharField("ім'я", max_length=100)
+    name_en = models.CharField("ім'я англійською", max_length=100, blank=True)
     bio = models.TextField('про майстра', blank=True)
+    bio_en = models.TextField('про майстра англійською', blank=True)
     services = models.ManyToManyField(
         Service,
         related_name='specialists',
@@ -32,6 +51,14 @@ class Specialist(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def localized_name(self):
+        return localized(self.name, self.name_en)
+
+    @property
+    def localized_bio(self):
+        return localized(self.bio, self.bio_en)
 
 
 class Appointment(models.Model):

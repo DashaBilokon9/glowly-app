@@ -1,19 +1,25 @@
-{% load static %}
+{% load i18n static %}
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Glowly{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/salon.css' %}?v=5">
+    <link rel="stylesheet" href="{% static 'css/salon.css' %}?v=6">
 </head>
 <body>
     <header class="site-header">
         <a class="logo" href="{% url 'home' %}">Glowly</a>
         <nav>
-            <a href="{% url 'catalog' %}">Салон</a>
-            <a href="{% url 'service_list' %}">Послуги</a>
-            <a class="nav-book" href="{% url 'appointment_create' %}">Записатися</a>
+            <a href="{% url 'catalog' %}">{% translate "Салон" %}</a>
+            <a href="{% url 'service_list' %}">{% translate "Послуги" %}</a>
+            <a class="nav-book" href="{% url 'appointment_create' %}">{% translate "Записатися" %}</a>
+            <form class="lang-switch" action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <button type="submit" name="language" value="uk" {% if LANGUAGE_CODE == 'uk' %}class="is-active"{% endif %}>UA</button>
+                <button type="submit" name="language" value="en" {% if LANGUAGE_CODE == 'en' %}class="is-active"{% endif %}>EN</button>
+            </form>
         </nav>
     </header>
     <main>
@@ -26,6 +32,6 @@
         {% endif %}
         {% block content %}{% endblock %}
     </main>
-    <footer class="site-footer">Glowly · запис до салону</footer>
+    <footer class="site-footer">{% translate "Glowly · запис до салону" %}</footer>
 </body>
 </html>

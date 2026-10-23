@@ -1,46 +1,47 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Glowly — салон{% endblock %}
+{% block title %}{% translate "Glowly — салон" %}{% endblock %}
 
 {% block content %}
 <section class="hero">
-    <p class="eyebrow">Салон краси</p>
-    <h1>Обери послугу і майстра</h1>
-    <p class="lede">Запис без акаунта: ім’я, телефон і зручний час.</p>
-    <a class="button" href="{% url 'appointment_create' %}">Записатися</a>
+    <p class="eyebrow">{% translate "Салон краси" %}</p>
+    <h1>{% translate "Обери послугу і майстра" %}</h1>
+    <p class="lede">{% translate "Запис без акаунта: ім’я, телефон і зручний час." %}</p>
+    <a class="button" href="{% url 'appointment_create' %}">{% translate "Записатися" %}</a>
 </section>
 
 <section>
-    <h2>Послуги</h2>
+    <h2>{% translate "Послуги" %}</h2>
     <ul class="cards services">
         {% for service in services %}
             <li class="card">
-                <h3>{{ service.name }}</h3>
-                <p class="meta">{{ service.duration_minutes }} хв · {{ service.price }} грн</p>
-                <a href="{% url 'appointment_create' %}?service={{ service.pk }}">Записатися</a>
+                <h3>{{ service.localized_name }}</h3>
+                <p class="meta">{% blocktranslate with minutes=service.duration_minutes price=service.price %}{{ minutes }} хв · {{ price }} грн{% endblocktranslate %}</p>
+                <a href="{% url 'appointment_create' %}?service={{ service.pk }}">{% translate "Записатися" %}</a>
             </li>
         {% empty %}
-            <li>Послуг ще немає. Додай їх в адмінці.</li>
+            <li>{% translate "Послуг ще немає. Додай їх в адмінці." %}</li>
         {% endfor %}
     </ul>
 </section>
 
 <section>
-    <h2>Майстри</h2>
+    <h2>{% translate "Майстри" %}</h2>
     <ul class="cards">
         {% for specialist in specialists %}
             <li class="card">
-                <h3><a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.name }}</a></h3>
+                <h3><a href="{% url 'specialist_detail' specialist.pk %}">{{ specialist.localized_name }}</a></h3>
                 <p>
                     {% for service in specialist.services.all %}
-                        {{ service.name }}{% if not forloop.last %}, {% endif %}
+                        {{ service.localized_name }}{% if not forloop.last %}, {% endif %}
                     {% empty %}
-                        Послуги ще не обрані
+                        {% translate "Послуги ще не обрані" %}
                     {% endfor %}
                 </p>
             </li>
         {% empty %}
-            <li>Майстрів ще немає.</li>
+            <li>{% translate "Майстрів ще немає." %}</li>
         {% endfor %}
     </ul>
 </section>

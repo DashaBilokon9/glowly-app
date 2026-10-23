@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{{ specialist.name }} — Glowly{% endblock %}
+{% block title %}{{ specialist.localized_name }} — Glowly{% endblock %}
 
 {% block content %}
-<p class="eyebrow">Майстер</p>
-<h1>{{ specialist.name }}</h1>
-{% if specialist.bio %}<p>{{ specialist.bio }}</p>{% endif %}
-<h2>Послуги</h2>
+<p class="eyebrow">{% translate "Майстер" %}</p>
+<h1>{{ specialist.localized_name }}</h1>
+{% if specialist.localized_bio %}<p>{{ specialist.localized_bio }}</p>{% endif %}
+<h2>{% translate "Послуги" %}</h2>
 <ul class="cards">
     {% for service in specialist.services.all %}
         <li class="card">
-            <h3>{{ service.name }}</h3>
-            <p class="meta">{{ service.duration_minutes }} хв · {{ service.price }} грн</p>
-            <a href="{% url 'appointment_create' %}?service={{ service.pk }}&specialist={{ specialist.pk }}">Записатися</a>
+            <h3>{{ service.localized_name }}</h3>
+            <p class="meta">{% blocktranslate with minutes=service.duration_minutes price=service.price %}{{ minutes }} хв · {{ price }} грн{% endblocktranslate %}</p>
+            <a href="{% url 'appointment_create' %}?service={{ service.pk }}&specialist={{ specialist.pk }}">{% translate "Записатися" %}</a>
         </li>
     {% empty %}
-        <li>Цей майстер ще не прив’язаний до послуг.</li>
+        <li>{% translate "Цей майстер ще не прив’язаний до послуг." %}</li>
     {% endfor %}
 </ul>
 {% endblock %}

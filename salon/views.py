@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils.translation import gettext as _
 
 from salon.forms import AppointmentForm
 from salon.models import Service, Specialist
@@ -39,7 +40,7 @@ def appointment_create(request):
         form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Запис збережено. Ми зателефонуємо для підтвердження.')
+            messages.success(request, _('Запис збережено. Ми зателефонуємо для підтвердження.'))
             return redirect('appointment_done')
     else:
         form = AppointmentForm(initial={

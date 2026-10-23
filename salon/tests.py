@@ -48,3 +48,15 @@ class IntroPageTests(TestCase):
         catalog = self.client.get('/catalog/')
         self.assertContains(home, 'Як записатися')
         self.assertContains(catalog, 'Манікюр')
+
+    def test_english_button_translates_page_and_service_name(self):
+        Service.objects.create(
+            name='Манікюр',
+            name_en='Manicure',
+            price='450.00',
+            duration_minutes=60,
+        )
+        self.client.post('/i18n/setlang/', {'language': 'en', 'next': '/'})
+        home = self.client.get('/')
+        self.assertContains(home, 'How to book')
+        self.assertContains(home, 'Manicure')

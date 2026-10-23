@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Запис — Glowly{% endblock %}
+{% block title %}{% translate "Запис — Glowly" %}{% endblock %}
 
 {% block content %}
 <div class="page-intro">
-    <p class="eyebrow">Візит</p>
-    <h1>Запис</h1>
-    <p class="lede">Акаунт не потрібен. Залиш ім’я і телефон — салон підтвердить візит.</p>
+    <p class="eyebrow">{% translate "Візит" %}</p>
+    <h1>{% translate "Запис" %}</h1>
+    <p class="lede">{% translate "Акаунт не потрібен. Залиш ім’я і телефон — салон підтвердить візит." %}</p>
 </div>
 <form method="post" class="booking-form">
     {% csrf_token %}
@@ -18,6 +19,6 @@
             {{ field.errors }}
         </label>
     {% endfor %}
-    <button type="submit">Підтвердити запис</button>
+    <button type="submit">{% translate "Підтвердити запис" %}</button>
 </form>
 {% endblock %}
